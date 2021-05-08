@@ -11,6 +11,8 @@ import { ILauncher } from '@jupyterlab/launcher';
 
 import { StackedPanel } from '@lumino/widgets';
 
+import { identifyIcon } from './icons';
+
 /**
  * The command IDs used by the server extension plugin.
  */
@@ -39,6 +41,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     commands.addCommand(command, {
       label: 'Identify',
       caption: 'Identify Widget',
+	  icon: identifyIcon,
       execute: async () => {
         const widget = new StackedPanel();
 		widget.id = 'identify';

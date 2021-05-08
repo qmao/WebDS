@@ -26,6 +26,8 @@ import {
   CellRenderer
 } from '@lumino/datagrid';
 
+import { launcherIcon } from './icons';
+
 /**
  * The command IDs used by the server extension plugin.
  */
@@ -335,6 +337,7 @@ class RandomDataModel extends DataModel {
     for (let i = 0, n = nr * nc; i < n; ++i) {
       this._data[i] = i / n;
     }
+	this.start = Date.now();
   }
 
   rowCount(region: DataModel.RowRegion): number {
@@ -393,12 +396,25 @@ class RandomDataModel extends DataModel {
         `Error on POST /jlab-ext-example/get-report ${dataToSend}.\n${reason}`
       );
     }
+	
+	this.framecount++;
+	const end = Date.now();
+
+	if ((end - this.start) > 1000)
+	{
+		console.log(this.framecount);
+		this.framecount = 0;
+		this.start = Date.now();
+	}
+	
     requestAnimationFrame(this.update);
   };
 
   private _rowCount: number;
   private _columnCount: number;
   private _data: number[] = [];
+  private  framecount: number;
+  private  start: number;
 }
 
 const heatMapViridisInverse: CellRenderer.ConfigFunc<string> = ({ value }) => {
@@ -491,6 +507,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     commands.addCommand(command, {
       label: 'Delta Image',
       caption: 'Get Delta Image',
+	  icon: launcherIcon,
       execute: async () => {
 
 		// GET request

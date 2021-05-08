@@ -16,11 +16,10 @@ print("[WebDS] handler is running!")
 def touchcomm_init():
     global tc
 
-    if (tc):
-        print("tc created");
-    else:
+    if (tc == None):
         print("going to create tc!!");
         tc = TouchComm.make(protocols='report_streamer', server='127.0.0.1', packratCachePath='/usr/local/syna/cache/packrat', streaming=False)
+        tc.reset()
         identify = tc.identify()
         print(identify)
         print("tc is created!!!!!!");
@@ -57,7 +56,7 @@ class ReportHandler(APIHandler):
 
     @tornado.web.authenticated
     def post(self):
-        print("REPORT POST IS ACTIVED");
+        ### print("REPORT POST IS ACTIVED");
         # input_data is a dictionary with a key "name"
         input_data = self.get_json_body()
 
@@ -67,7 +66,7 @@ class ReportHandler(APIHandler):
         image = [ [0] * 37 for _ in range(19) ]
         image = np.asarray(image)
         report = tc.getReport()
-        print(report)
+        ### print(report)
         if ('delta' in report):
             image = report[1]['image']
             ##print(image)
@@ -75,7 +74,7 @@ class ReportHandler(APIHandler):
             ##print(lists)
             data = lists
 
-        print(data)
+        ## print(data)
 
         self.finish(json.dumps(data))
 
