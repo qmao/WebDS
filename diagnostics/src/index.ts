@@ -13,6 +13,10 @@ import { requestAPI } from './handler';
 import { StackedPanel, Widget } from '@lumino/widgets';
 
 import {
+  DataGrid, DataModel, JSONModel
+} from '@lumino/datagrid';
+
+import {
   Message
 } from '@lumino/messaging';
 
@@ -518,9 +522,9 @@ const extension: JupyterFrontEndPlugin<void> = {
 			console.error(`Error on GET /webds-api/get-report.\n${reason}`);
 		}
 
-        let wrapper4 = createWrapper(grid4, 'Random Ticks 2');
-        wrapper4.id = 'Random Ticks 2';
-        shell.add(wrapper4, 'main');
+		let wrapper5 = createWrapper(grid5, 'JSON Data');
+        wrapper5.id = 'Random Ticks 2';
+        shell.add(wrapper5, 'main');
       }
     });
 
