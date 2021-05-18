@@ -23,7 +23,7 @@ import '../style/index.css';
  * The command IDs used by the server extension plugin.
  */
 namespace CommandIDs {
-  export const get = 'server:get-program';
+  export const get = 'webds:program';
 }
   
 

@@ -13,10 +13,6 @@ import { requestAPI } from './handler';
 import { StackedPanel, Widget } from '@lumino/widgets';
 
 import {
-  DataGrid, DataModel, JSONModel
-} from '@lumino/datagrid';
-
-import {
   Message
 } from '@lumino/messaging';
 
@@ -36,7 +32,7 @@ import { launcherIcon } from './icons';
  * The command IDs used by the server extension plugin.
  */
 namespace CommandIDs {
-  export const get = 'server:get-identify';
+  export const get = 'webds:diagnostics';
 }
 
 let start_report = false;
@@ -522,9 +518,9 @@ const extension: JupyterFrontEndPlugin<void> = {
 			console.error(`Error on GET /webds-api/get-report.\n${reason}`);
 		}
 
-		let wrapper5 = createWrapper(grid5, 'JSON Data');
-        wrapper5.id = 'Random Ticks 2';
-        shell.add(wrapper5, 'main');
+		let wrapper4 = createWrapper(grid4, 'Delta Image');
+        wrapper4.id = 'Random Ticks 2';
+        shell.add(wrapper4, 'main');
       }
     });
 

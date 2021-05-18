@@ -21,7 +21,7 @@ import {
  * The command IDs used by the server extension plugin.
  */
 namespace CommandIDs {
-  export const get = 'server:get-file';
+  export const get = 'webds:identify';
 }
   
   
