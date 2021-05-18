@@ -55,29 +55,7 @@ namespace Data {
       "fields": [
         {
           "name": "packetVer",
-          "type": "integer"
-        },
-        {
-          "name": "buildID",
-          "type": "integer"
-        },
-        {
-          "name": "maxWriteBytes",
-          "type": "integer"
-        },
-		{
-          "name": "mode",
-          "type": "string",
-          "constraint": {
-            "enum": "dynamic"
-          }
-        },		
-		{
-          "name": "partNumber",
-          "type": "string",
-          "constraint": {
-            "enum": "dynamic"
-          }
+          "type": "string"
         },
       ],
       "pandas_version": "0.20.0"

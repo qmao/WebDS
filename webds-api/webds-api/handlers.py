@@ -22,7 +22,7 @@ def touchcomm_init():
         tc.reset()
         identify = tc.identify()
         print(identify)
-        print("tc is created!!!!!!");
+        print("tc is created!");
 
 class GeneralHandler(APIHandler):
     # The following decorator should be present on all verb methods (head, get, post,
